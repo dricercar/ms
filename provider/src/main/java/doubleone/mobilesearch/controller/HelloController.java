@@ -24,13 +24,7 @@ public class HelloController{
         System.out.println("Are you OK!");
         return "index";
     }
-    @RequestMapping(value="api/submit", method=RequestMethod.POST)
-    @ResponseBody
-    public String submit(@RequestParam("username")String username, @RequestParam("password")String password){
-        System.out.println(username + " " + password);
-        return "OK";
-
-    }   
+     
     @RequestMapping(value="api/addProduct", method=RequestMethod.POST)
     @ResponseBody
     public String addProduct(@RequestParam("name")String name, @RequestParam("brand")String brand, @RequestParam("price")String price,
