@@ -1,0 +1,39 @@
+
+<div class="container">
+  <h1>手机数据：</h1>
+  <form #inputForm="ngForm">
+    <div class="form-group">
+      <label for="name">名称：</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" required />
+    </div>
+    <div class="form-group">
+      <label for="brand">品牌：</label>
+      <input type="text" class="form-control" id="brand" name="brand" [(ngModel)]="model.brand" required />
+    </div>
+    <div class="form-group">
+      <label for="price">价格：(RMB)</label>
+      <input type="number" min="0" class="form-control" id="price" name="price" [(ngModel)]="model.price" required />
+    </div>
+    <div class="form-group">
+      <label for="img">图片：</label>
+      <input #file type="file" class="form-control" id="img" name="img" [(ngModel)]="model.img" />
+    </div>
+    <div class="form-group">
+      <label for="type">手机类型：</label>
+      <input type="text" class="form-control" id="type" name="type" [(ngModel)]="model.type" />
+    </div>
+    <div class="form-group">
+      <label for="os">操作系统</label>
+      <input type="text" class="form-control" id="os" name="os" [(ngModel)]="model.os" />
+    </div>
+    <div class="form-group">
+      <label for="cpu">CPU：</label>
+      <input type="text" class="form-control" id="cpu" name="cpu" [(ngModel)]="model.cpu" />
+    </div>
+    <div class="form-group">
+      <label for="size">尺寸：</label>
+      <input type="text" class="form-control" id="size" name="size" [(ngModel)]="model.size" />
+    </div>
+    <button type="submit" (click)="commit()" class="btn btn-primary">提交</button>
+  </form>
+</div>
