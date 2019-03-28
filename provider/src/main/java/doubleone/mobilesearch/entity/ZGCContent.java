@@ -1,6 +1,6 @@
 package doubleone.mobilesearch.entity;
 
-public interface ProductContent {
+public interface ZGCContent{
 	public static final String BRAND = "品牌";
 	public static final String NAME = "名称";
 	public static final String PRICE = "价格";

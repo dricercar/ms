@@ -12,12 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import io.swagger.annotations.ApiOperation;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HelloController{
+public class SubmitController{
     @RequestMapping("/")
     @ResponseBody
     public String hello(){
@@ -25,6 +28,7 @@ public class HelloController{
         return "index";
     }
      
+    @ApiOperation(value="提交手机产品数据")
     @RequestMapping(value="api/addProduct", method=RequestMethod.POST)
     @ResponseBody
     public String addProduct(@RequestParam("name")String name, @RequestParam("brand")String brand, @RequestParam("price")String price,
