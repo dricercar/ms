@@ -9,7 +9,7 @@ public final class TPYLoadProduct extends AbstractLoadProduct {
 
     @Override
     protected void match(Product product, String line) {
-        line = TPYNoiseReducer.reduceNoise(line);
+        line = NoiseReducer.reduceNoise(line, '•', ',');
         String[] temp = line.split(":", 2);
 		Optional<String> optional = Optional.empty();
 		if(temp[1].contains("null")) {

@@ -20,10 +20,13 @@ public class TPYPageProcessor implements PageProcessor {
         page.addTargetRequests(page.getHtml().links().regex("https://product.pconline.com.cn/mobile/\\w+/\\w+_detail.html").all());
 
         String name = page.getHtml().xpath("//div[@class='area area-coreparams']/div[@class='box']/div[@class='hd']/h3/text()").get();
-        String brand = page.getHtml().xpath("//div[@class='wraper']/div[@class='crumb']/a[4]").get();
+        String brand = page.getHtml().xpath("//div[@class='wraper']/div[@class='crumb']/a[4]/text()").get();
         String price = page.getHtml().xpath("//div[@class='box productinfo']/div[@class='bd']/p/a[@class='r-price fc-red']/allText()").get();
         String imgUrl = "https:" + page.getHtml().xpath("//div[@class='box productinfo']/div[@class='bd']/a/img/@#src").get();
-
+        // brand = brand.substring(0, brand.indexOf("手机大全"));
+        if(brand != null && brand.indexOf("手机大全") > 0){
+            brand = brand.substring(0, brand.indexOf("手机大全"));
+        }
         page.putField("名称", name);
 		page.putField("品牌", brand);
 		page.putField("价格", price);

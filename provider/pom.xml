@@ -69,7 +69,19 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${swagger2.version}</version>
 		</dependency>
-	</dependencies>
+		<!--rest hight level client-->
+		<dependency>
+		    <groupId>org.elasticsearch.client</groupId>
+		    <artifactId>elasticsearch-rest-high-level-client</artifactId>
+		    <version>6.6.1</version>
+		</dependency>
+		<!-- elasticsearch-->
+		<dependency>
+	      <groupId>org.elasticsearch</groupId>
+	      <artifactId>elasticsearch</artifactId>
+	      <version>6.6.1</version>
+	    </dependency>
+		</dependencies>
 
 	<build>
 		<plugins>

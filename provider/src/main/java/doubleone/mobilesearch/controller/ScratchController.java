@@ -66,6 +66,7 @@ public class ScratchController {
     @DeleteMapping(value="api/scratch")
     public String stopScratch() {
         System.out.println("stopScratch");
+        scratchService.stopScratch();
         return "{\"message\": \"it's OK\"}";
     }
 

@@ -40,4 +40,7 @@ public class SpiderHolder{
         Spider spider = optional.get();
         spider.addUrl(url);
     }
+    public int size(){
+        return maps.size();
+    }
 }
