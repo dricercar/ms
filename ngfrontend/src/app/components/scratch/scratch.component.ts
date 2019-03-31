@@ -28,9 +28,12 @@ export class ScratchComponent implements OnInit {
     formData.append("url", this.URL);
     formData.append("type", this.type);
     console.log(formData);
-    this.scratchService.scratch(formData).subscribe( x =>{
-      alert(JSON.stringify(x));
-      console.log(x);
+    this.scratchService.scratch(formData).subscribe( payload =>{
+      if(payload.code == "200"){
+        alert("开始爬取数据。")
+      }else{
+        alert("错误： " + payload.msg);
+      }
     });
 
   }

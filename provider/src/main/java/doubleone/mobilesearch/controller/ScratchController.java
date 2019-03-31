@@ -3,8 +3,12 @@ package doubleone.mobilesearch.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import doubleone.mobilesearch.config.MobileSearchProperties;
+import doubleone.mobilesearch.entity.Payload;
+import doubleone.mobilesearch.entity.Product;
 import doubleone.mobilesearch.entity.SessionBean;
+import doubleone.mobilesearch.exception.PermissionDeniedException;
 import doubleone.mobilesearch.services.ScratchService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -28,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * ScratchController
  */
 @RestController
+@Api("爬虫管理")
 public class ScratchController {
 
     
@@ -49,30 +54,28 @@ public class ScratchController {
         @ApiImplicitParam(name="type", value="Processor类型", required=true)
     })
     @PostMapping(value="api/scratch")
-    public String startScratch(@RequestParam("url") String url,@RequestParam("type")String type, HttpServletRequest request) {
+    public Payload<Void> startScratch(@RequestParam("url") String url,@RequestParam("type")String type, HttpServletRequest request) {
         System.out.println(url + ": " + type);
-        String message = "OK";
         String remoteHost = request.getRemoteHost();
         if(remoteHost.equals(request.getRemoteHost()))
             scratchService.scratch(url, type);
         else{
-            message = "你没有权限";
+            throw new PermissionDeniedException("401", "你没有权限使用该功能");
         }
-        System.out.println("{\"message\": \"" + message + "\"}");
-        return "{\"message\": \"" + message + "\"}";
+        return new Payload<>();
     }
 
     @ApiOperation(value="停止爬取数据")
     @DeleteMapping(value="api/scratch")
-    public String stopScratch() {
+    public Payload<Void> stopScratch() {
         System.out.println("stopScratch");
         scratchService.stopScratch();
-        return "{\"message\": \"it's OK\"}";
+        return new Payload<>();
     }
 
     @ApiOperation(value="请求已爬取的手机数据")
     @GetMapping(value="api/scratch")
-    public String getMethodName(@RequestParam String param) {
+    public Payload<List<Product>> getMethodName(@RequestParam String param) {
         return null;
     }
     
