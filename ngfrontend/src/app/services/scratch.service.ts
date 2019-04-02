@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Payload } from '../entity/payload'
+import { Productsource } from '../entity/productsource';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,8 @@ export class ScratchService {
   }
   scratchType():Observable<string[]>{
     return this.httpClient.get<string[]>(this.scratchTypesURL);
+  }
+  getScratched():Observable<Payload<Productsource[]>>{
+    return this.httpClient.get<Payload<Productsource[]>>(this.scratchURL);
   }
 }

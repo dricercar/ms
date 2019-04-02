@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import doubleone.mobilesearch.config.MobileSearchProperties;
 import doubleone.mobilesearch.entity.Payload;
 import doubleone.mobilesearch.entity.Product;
+import doubleone.mobilesearch.entity.ProductSource;
 import doubleone.mobilesearch.entity.SessionBean;
 import doubleone.mobilesearch.exception.PermissionDeniedException;
 import doubleone.mobilesearch.services.ScratchService;
@@ -75,8 +76,11 @@ public class ScratchController {
 
     @ApiOperation(value="请求已爬取的手机数据")
     @GetMapping(value="api/scratch")
-    public Payload<List<Product>> getMethodName(@RequestParam String param) {
-        return null;
+    public Payload<List<ProductSource>> getScratched() {
+        // List<ProductSource> list = scratchService.getScratched();
+        // list.forEach(item -> System.out.println(item.getName()));
+        // System.out.println(list);
+        return new Payload<List<ProductSource>>(scratchService.getScratched());
     }
     
     @ApiOperation(value="可使用的Processor类型")

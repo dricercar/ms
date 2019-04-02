@@ -1,8 +1,13 @@
 <div class="container">
+  <div class="row img-m">
+    <div class="col text-center">
+        <img src="/assets/logo.png"/>
+    </div>
+  </div>
   <div class="row">
-    <div class="col min-size">
-          <input class="full w-50" #input type="text"/>
-          <button class="btn border-0 w-25" (click)="search(input.value)">搜索</button>
+    <div class="col min-size text-center">
+          <input class="full w-50" #input type="text"/>&nbsp;
+          <button class="btn btn-primary border-0 w-25" (click)="search(input.value)">搜索</button>
     </div>
   </div>
 </div>

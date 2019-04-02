@@ -23,8 +23,10 @@
           </div>
       </div>
     </div>
-    <div class="col-6">
-
+    <div class="col-6 sp-box">
+      <ul *ngFor="let item of productSource">
+        <li><a href="{{item.url}}" target="blank">{{item.name}}</a></li>
+      </ul>
     </div>
     
     

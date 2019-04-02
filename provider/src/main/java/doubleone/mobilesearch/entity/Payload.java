@@ -15,7 +15,7 @@ public class Payload<T> implements Serializable {
     @ApiModelProperty("描述性原因")
     private String msg = "OK";
     @ApiModelProperty("业务数据")
-    private T payload;
+    private T data;
 
     public Payload() {
     }
@@ -23,15 +23,15 @@ public class Payload<T> implements Serializable {
     /**
      * @return the payload
      */
-    public T getPayload() {
-        return payload;
+    public T getData() {
+        return data;
     }
 
     /**
      * @param payload the payload to set
      */
-    public void setPayload(T payload) {
-        this.payload = payload;
+    public void setData(T data) {
+        this.data = data;
     }
 
     /**
@@ -62,12 +62,12 @@ public class Payload<T> implements Serializable {
         this.msg = msg;
     }
 
-    public Payload(T payload) {
-        this.setPayload(payload);
+    public Payload(T data) {
+        this.setData(data);
     }
 
-    public Payload(T payload, String code, String msg) {
-        this.setPayload(payload);
+    public Payload(T data, String code, String msg) {
+        this.setData(data);
         this.setCode(code);
         this.setMsg(msg);
     }

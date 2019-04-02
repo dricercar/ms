@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import doubleone.mobilesearch.beans.PersistProductSourcePipeline;
 import doubleone.mobilesearch.beans.SpiderHolder;
 import doubleone.mobilesearch.beans.TPYJsonElasticPipeline;
 import doubleone.mobilesearch.beans.TPYPageProcessor;
@@ -31,7 +32,7 @@ public class MobileSearchConfigutation {
     private RestHighLevelClient client;
     
     @Bean
-    public SpiderHolder mobileSpiders(){
+    public SpiderHolder mobileSpiders(Pipeline pipeline){
         SpiderHolder holder = new SpiderHolder();
         List<String> list = properties.getScratch().getProcessors();
         String dataDir = properties.getScratch().getDataDir();
@@ -48,16 +49,15 @@ public class MobileSearchConfigutation {
                 it.remove();
                 continue;
             }
-            spider.setDownloader(downloader);
+            spider.setDownloader(downloader).addPipeline(pipeline);
             holder.putSpider(type, spider);
         }
         return holder;
     }
 
-    // @Bean
-    // @ConditionalOnMissingBean
-    // public Pipeline pipeline(){
-    //     return new FilePipeline(properties.getScratch().getDataDir());
-    // }
+    @Bean
+    public Pipeline pipeline(){
+        return new PersistProductSourcePipeline();
+    }
 
 }
