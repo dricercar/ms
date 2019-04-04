@@ -1,27 +1,37 @@
 package doubleone.mobilesearch.entity;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 
 public class Product {
 
-	@JSONField(name="品牌")
-	private String brand;
-	@JSONField(name="名称")
+	private Long id;
+	// @JSONField(name = "名称")
 	private String name;
-	@JSONField(name="价格")
+	// @JSONField(name = "品牌")
+	private String brand;
+	// @JSONField(name = "价格")
 	private String price;
-	@JSONField(name="imgUrl")
+	// @JSONField(name = "imgUrl")
 	private String imgUrl;
-	
+
 	private String type;
 	private String os;
 	private String cpu;
 	private String size;
 	private String path;
-	
+
 	public String getBrand() {
 		return brand;
 	}
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
@@ -70,8 +80,7 @@ public class Product {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "品牌: " + brand + "   名称: " + name + "  类型: " + type + "  价格: " + price +
-				"\n操作系统: " + os + "  cpu类型: " + cpu;
+		return JSON.toJSONString(this);
 	}
 	public String getPath() {
 		return path;

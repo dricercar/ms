@@ -1,0 +1,33 @@
+<div class="container min-size">
+  <div class="row">
+    <div class="col">
+          <input class="full w-50" type="text" [(ngModel)]="query"/>&nbsp;
+          <button class="btn btn-primary border-0 w-25" (click)="search()">搜索</button>
+    </div>
+  </div>
+  <div class="row" >
+      <div class="col product-box text-center" *ngFor="let item of products">
+        <a href="">
+          <img width="220" height="165" src="{{item.imgUrl}}" />
+        </a>
+        <a>
+          <h5>{{item.name}}&nbsp;{{item.brand}}</h5>
+        </a>
+        <div><span>参考价：</span><b>{{item? item.price: '未知'}}</b></div>
+      </div>
+  </div>
+  <div class="row">
+      
+      <nav aria-label="Page navigation" *ngIf="totalPage > 0">
+        <ul class="pagination">
+          <li class="{{currentPage == 1? 'disbale': ''}}">
+            <button *ngIf="currentPage > 1" (click)="lastPage()">&laquo;</button>
+          </li>
+          <li *ngFor="let item of counter; let i=index"><button (click)="choosePage($event)">{{i+1}}</button></li>
+          <li class="{{currentPage == totalPage? 'disbale': ''}}">
+            <button *ngIf="currentPage != totalPage" (click)="nextPage()">&raquo;</button>
+          </li>
+        </ul>
+      </nav>
+  </div>
+</div>

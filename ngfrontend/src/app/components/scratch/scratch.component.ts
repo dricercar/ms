@@ -23,6 +23,14 @@ export class ScratchComponent implements OnInit {
     });
     
   }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    if(this.timer){
+      clearInterval(this.timer);
+      this.stop();
+    }
+  }
 
   comfirm(){
     alert(this.URL + ' ' + this.type);

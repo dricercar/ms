@@ -33,7 +33,6 @@ public class TPYPageProcessor implements PageProcessor {
         page.putField("imgUrl", imgUrl);
         //详细数据
         List<String> tables = page.getHtml().xpath("//div[@class='area area-detailparams']/div[@class='box']/div[@class='bd']/table").all();
-        System.out.println(tables.size());
         for(int i = 1; i < tables.size(); i++) {
         	String id="Jbasicparams"+i;
         	List<String> bodys = page.getHtml().xpath("//table[@id='"+id+"']/tbody/tr").all();

@@ -1,0 +1,94 @@
+curl -XPUT 'localhost:9200/mobilesearch' -H 'content-type:application/json' -d '
+{
+    "mappings": {
+        "product":{
+            "properties":{
+                "id":{
+                    "type": "integer"
+                },
+                "name":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "brand":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "price":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "imgUrl":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "type":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "os":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "cpu":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "size":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "path":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                }
+            }
+        }
+    }
+}'
+

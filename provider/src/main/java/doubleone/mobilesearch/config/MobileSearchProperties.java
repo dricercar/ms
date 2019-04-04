@@ -48,7 +48,7 @@ public class MobileSearchProperties{
     public static class Elastic {
         private String host = "127.0.0.1";
         private int port = 9200;
-        private String index = "mobileSearch";
+        private String index = "mobilesearch";
 
         /**
          * @return the host

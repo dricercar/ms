@@ -5,6 +5,7 @@ import { CommitComponent } from '../components/commit/commit.component';
 import { ScratchComponent } from '../components/scratch/scratch.component';
 import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 import { SearchComponent } from '../components/search/search.component';
+import { SearchPageComponent } from '../components/search-page/search-page.component';
 const appRoutes:Routes = [
   {
     path: "commit", component: CommitComponent
@@ -14,6 +15,9 @@ const appRoutes:Routes = [
   },
   {
     path: "search", component: SearchComponent
+  },
+  {
+    path: "search/:query", component: SearchPageComponent
   },
   {
     path: "", component: SearchComponent

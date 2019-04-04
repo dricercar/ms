@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  query:string;
+  constructor(private router: Router,
+            private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
+  search(){
+     if(this.query != null && this.query.length > 0){
+       this.router.navigate(['/search', this.query]);
+     }
+  }
 }

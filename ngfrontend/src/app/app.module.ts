@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ScratchComponent } from './components/scratch/scratch.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
+import { SearchPageComponent } from './components/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
     CommitComponent,
     ScratchComponent,
     PageNotFoundComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
