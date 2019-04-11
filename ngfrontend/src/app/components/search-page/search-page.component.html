@@ -7,10 +7,10 @@
   </div>
   <div class="row" >
       <div class="col product-box text-center" *ngFor="let item of products">
-        <a href="">
+        <a href="{{'detail/'+item.id}}">
           <img width="220" height="165" src="{{item.imgUrl}}" />
         </a>
-        <a>
+        <a href="{{'detail/'+item.id}}">
           <h5>{{item.name}}&nbsp;{{item.brand}}</h5>
         </a>
         <div><span>参考价：</span><b>{{item? item.price: '未知'}}</b></div>

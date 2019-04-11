@@ -10,6 +10,7 @@ import { ScratchComponent } from './components/scratch/scratch.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
 import { SearchPageComponent } from './components/search-page/search-page.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
     CommitComponent,
     ScratchComponent,
     PageNotFoundComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

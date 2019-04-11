@@ -1,0 +1,40 @@
+<div class="container">
+  <h4>{{product.name}}</h4>
+  <div class="row">
+    <a href="{{product.imgUrl}}">
+      <img width="320" height="240" src="{{product.imgUrl}}" />
+    </a>
+  </div>
+  <div class="row">
+    <table border="2">
+      <tr *ngIf="product.name">
+        <th>名称</th>
+        <td>{{product.name}}</td>
+      </tr>
+      <tr *ngIf="product.brand">
+        <th>品牌</th>
+        <td>{{product.brand}}</td>
+      </tr>
+      <tr *ngIf="product.price">
+        <th>价格</th>
+        <td>{{product.price}}</td>
+      </tr>
+      <tr *ngIf="product.cpu">
+        <th>CPU</th>
+        <td>{{product.cpu}}</td>
+      </tr>
+      <tr *ngIf="product.os">
+        <th>操作系统</th>
+        <td>{{product.os}}</td>
+      </tr>
+      <tr *ngIf="product.size">
+        <th>尺寸</th>
+        <td>{{product.size}}</td>
+      </tr>
+      <tr *ngIf="product.type">
+        <th>类型</th>
+        <td>{{product.type}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -28,6 +28,7 @@ import org.springframework.stereotype.Service;
 import doubleone.mobilesearch.config.MobileSearchProperties;
 import doubleone.mobilesearch.entity.Product;
 import doubleone.mobilesearch.entity.ProductPage;
+import doubleone.mobilesearch.exception.NotFoundException;
 
 @Service
 public class SearchService {
@@ -70,6 +71,32 @@ public class SearchService {
         }
         return new ProductPage(totalPage, currentPage, list);
     }
+
+    public Product findProduct(int id)  {
+        SearchRequest request = new SearchRequest(properties.getElastic().getIndex().toLowerCase());
+        SearchSourceBuilder builder = new SearchSourceBuilder();
+        builder.query(QueryBuilders.termQuery("id", id));
+        builder.size(1);
+    
+        request.source(builder);
+        
+        SearchResponse response;
+        try {
+            response = client.search(request, RequestOptions.DEFAULT);
+            if(response.status().getStatus() == 200){
+                if(response.getHits().getTotalHits() > 0){
+                    String text = response.getHits().getHits()[0].getSourceAsString();
+                    return JSON.parseObject(text, Product.class);
+                }else{
+                    throw new NotFoundException("404", "没有找到该产品");
+                }
+            }
+        } catch (IOException e) {
+            throw new NotFoundException("404", "没有找到该产品");
+        }
+        return null;
+
+    }
     // public List<Product> search(String query, int page) throws IOException {
     //     SearchRequest request = new SearchRequest(properties.getElastic().getIndex());
     //     SearchSourceBuilder builder = new SearchSourceBuilder();
@@ -90,40 +117,5 @@ public class SearchService {
     //     }
     //     return list;
     // }
-    /**
-     * 如果product不存在indexes中时，将其索引。
-     */
-    public void index(Product product){
-        if(exists(product.getName()))
-            return;
-        String text = JSON.toJSONString(product);
-        IndexRequest request = new IndexRequest(properties.getElastic().getIndex().toLowerCase(), "product");
-        request.source(text, XContentType.JSON);
-        try {
-            client.index(request, RequestOptions.DEFAULT); 
-            logger.info("indexed " + product.getName());
-        } catch (IOException e) {
-            logger.info("indexing exception" + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    public boolean exists(String value) {
-        SearchRequest searchRequest = new SearchRequest(properties.getElastic().getIndex());
-        SearchSourceBuilder builder = new SearchSourceBuilder();
-        builder.query(QueryBuilders.termQuery("name.keyword", value));
-        builder.fetchSource(false);
-
-        SearchResponse searchResponse;
-        try {
-            searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-            if(searchResponse.status().getStatus() == 200){
-                return searchResponse.getHits().getTotalHits() > 0;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return false;
-    }
+    
 }

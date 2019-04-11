@@ -22,12 +22,10 @@ public class SearchController {
 
     @GetMapping("api/search")
     public Payload<ProductPage> search(@RequestParam("wd") String query, @RequestParam(value = "page", defaultValue = "1")int page) throws IOException {
-        System.out.println("controller search");
         return new Payload<ProductPage>(searchService.search(query, page));
     }
-    // @GetMapping("api/search")
-    // public Payload<ProductPage> search(@RequestParam("wd") String query, @RequestParam(value = "page", defaultValue = "1")int page) throws IOException {
-    //     System.out.println("controller search");
-    //     return new Payload<ProductPage>(new ProductPage(0, searchService.search(query, page)));
-    // }
+    @GetMapping("api/detail")
+    public Payload<Product> findProduct(@RequestParam("id")int id){
+        return new Payload<Product>(searchService.findProduct(id));
+    }
 }

@@ -13,10 +13,15 @@ export class SearchService {
   constructor(private httpClient: HttpClient) { }
 
   queryUrl:string = '/api/search';
-  detailUrl:string = '/api/search/detail';
+  detailUrl:string = '/api/detail';
   search(query:string, currentPage:number):Observable<Payload<ProductPage<Product[]>>>{
     console.log(`${this.queryUrl}?wd=${query}&page=${currentPage}`)
     let url = `${this.queryUrl}?wd=${query}&page=${currentPage}`;
     return this.httpClient.get<Payload<ProductPage<Product[]>>>(url);
+  }
+
+  getProduct(id:number):Observable<Payload<Product>>{
+    let url = `${this.detailUrl}?id=${id}`;
+    return this.httpClient.get<Payload<Product>>(url);
   }
 }
