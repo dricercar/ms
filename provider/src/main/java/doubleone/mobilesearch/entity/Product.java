@@ -20,7 +20,18 @@ public class Product {
 	private String cpu;
 	private String size;
 	private String path;
-
+	public Product(){
+	}
+	public Product(String name, String brand, String price, String imgUrl, String type, String os, String cpu, String size){
+		this.name = name;
+		this.brand = brand;
+		this.price = price;
+		this.imgUrl = imgUrl;
+		this.type = type;
+		this.os = os;
+		this.cpu = cpu; 
+		this.size = size;
+	}
 	public String getBrand() {
 		return brand;
 	}

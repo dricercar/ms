@@ -34,6 +34,6 @@
       <label for="size">尺寸：</label>
       <input type="text" class="form-control" id="size" name="size" [(ngModel)]="model.size" required />
     </div>
-    <button type="submit" (ngSubmit)="commit()" class="btn btn-primary" [disabled]="!inputForm.form.valid">提交</button>
+    <button type="submit" (click)="commit()" class="btn btn-primary" [disabled]="!inputForm.form.valid">提交</button>
   </form>
 </div>
