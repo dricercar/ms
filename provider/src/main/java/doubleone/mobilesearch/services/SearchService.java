@@ -33,7 +33,7 @@ import doubleone.mobilesearch.exception.NotFoundException;
 @Service
 public class SearchService {
 
-    private static final int COUNT_PER_PAGE = 2;
+    private static final int COUNT_PER_PAGE = 20;
     private static final Logger logger = LoggerFactory.getLogger(SearchService.class);
     @Autowired
     private RestHighLevelClient client;
