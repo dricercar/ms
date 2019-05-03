@@ -8,6 +8,103 @@ curl -XPUT 'localhost:9200/mobilesearch' -H 'content-type:application/json' -d '
                 },
                 "name":{
                     "type": "text",
+                    "analyzer": "smartcn",
+                    "search_analyzer": "smartcn",
+                    "fields":{
+                        "keyword":{
+                            "type": "text"
+                        }
+                    }
+                },
+                "brand":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "price":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "imgUrl":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "type":{
+                    "type": "text",
+                    "analyzer": "smartcn",
+                    "search_analyzer": "smartcn",
+                    "fields":{
+                        "keyword":{
+                            "type": "text"
+                        }
+                    }
+                },
+                "os":{
+                    "type": "text",
+                    "analyzer": "smartcn",
+                    "search_analyzer": "smartcn",
+                    "fields":{
+                        "keyword":{
+                            "type": "text"
+                        }
+                    }
+                },
+                "cpu":{
+                    "type": "text",
+                    "analyzer": "smartcn",
+                    "search_analyzer": "smartcn",
+                    "fields":{
+                        "keyword":{
+                            "type": "text"
+                        }
+                    }
+                },
+                "size":{
+                    "type": "text",
+                    "analyzer": "smartcn",
+                    "search_analyzer": "smartcn",
+                    "fields":{
+                        "keyword":{
+                            "type": "text"
+                        }
+                    }
+                },
+                "path":{
+                    "type": "text",
+                    "fields":{
+                        "keyword":{
+                            "type": "text"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}'
+curl -XPUT 'localhost:9200/mobilesearch' -H 'content-type:application/json' -d '
+{
+    "mappings": {
+        "product":{
+            "properties":{
+                "id":{
+                    "type": "integer"
+                },
+                "name":{
+                    "type": "text",
                     "fields":{
                         "keyword":{
                             "type": "keyword",

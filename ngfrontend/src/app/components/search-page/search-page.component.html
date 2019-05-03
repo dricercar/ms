@@ -13,7 +13,7 @@
         <a href="{{'detail/'+item.id}}">
           <h5>{{item.name}}&nbsp;{{item.brand}}</h5>
         </a>
-        <div><span>参考价：</span><b>{{item? item.price: '未知'}}</b></div>
+        <div *ngIf="item.price"><span>参考价：</span><b>{{item.price}}</b></div>
       </div>
   </div>
   <div class="row">

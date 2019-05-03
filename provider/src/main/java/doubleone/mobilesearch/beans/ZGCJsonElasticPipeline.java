@@ -1,23 +1,13 @@
 package doubleone.mobilesearch.beans;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.alibaba.fastjson.JSON;
 
-import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import doubleone.mobilesearch.config.MobileSearchProperties;
 import doubleone.mobilesearch.entity.Product;
@@ -25,7 +15,6 @@ import doubleone.mobilesearch.entity.ZGCContent;
 import doubleone.mobilesearch.util.NoiseReducer;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
-import us.codecraft.webmagic.pipeline.Pipeline;
 
 public class ZGCJsonElasticPipeline extends AbstractElasticPipeline {
 

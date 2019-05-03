@@ -7,12 +7,10 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 
-import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
@@ -33,7 +31,7 @@ import doubleone.mobilesearch.exception.NotFoundException;
 @Service
 public class SearchService {
 
-    private static final int COUNT_PER_PAGE = 20;
+    private static final int COUNT_PER_PAGE = 6;
     private static final Logger logger = LoggerFactory.getLogger(SearchService.class);
     @Autowired
     private RestHighLevelClient client;

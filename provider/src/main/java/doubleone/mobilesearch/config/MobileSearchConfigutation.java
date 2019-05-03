@@ -2,17 +2,13 @@ package doubleone.mobilesearch.config;
 
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.alibaba.fastjson.JSON;
 
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.metrics.max.MaxAggregationBuilder;
 import org.elasticsearch.search.aggregations.metrics.max.ParsedMax;
@@ -21,7 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,12 +26,9 @@ import doubleone.mobilesearch.beans.TPYJsonElasticPipeline;
 import doubleone.mobilesearch.beans.TPYPageProcessor;
 import doubleone.mobilesearch.beans.ZGCJsonElasticPipeline;
 import doubleone.mobilesearch.beans.ZGCPageProcessor;
-import doubleone.mobilesearch.entity.Product;
 import doubleone.mobilesearch.webmagic.fix.HttpClientDownloader;
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.FilePipeline;
 import us.codecraft.webmagic.pipeline.Pipeline;
-import us.codecraft.webmagic.processor.PageProcessor;
 
 @Configuration
 public class MobileSearchConfigutation {

@@ -16,13 +16,19 @@ public class ZGCPageProcessor implements PageProcessor {
     @Override
     public void process(Page page) {
         logger.info("processing " + page.getUrl().get());
-
         page.addTargetRequests(page.getHtml().links().regex("http://detail.zol.com.cn/\\w+/\\w+/param.shtml").all());
-		page.putField("名称", page.getHtml().xpath("//div[@class='breadcrumb']/a[@target='_self']/text()"));
-		page.putField("品牌", page.getHtml().xpath("//body/div/div[@class='breadcrumb']/a[@id='_j_breadcrumb']/text()").toString());
-		page.putField("价格", page.getHtml().css(".goods-card__price span").xpath("/span/text()").get());
-		page.putField("imgUrl", page.getHtml().xpath("//body/div/div[@class='side']/div/div/a/img/@src"));
-			
+        String mobile = page.getHtml().xpath("//body/div/div[@class='breadcrumb']/a[2]/text()").get();
+        logger.info(mobile);
+        if(mobile != null && !mobile.equals("手机"))
+            return;
+        String name = page.getHtml().xpath("//div[@class='breadcrumb']/a[@target='_self']/text()").toString();
+        String brand = page.getHtml().xpath("//body/div/div[@class='breadcrumb']/a[@id='_j_breadcrumb']/text()").toString();
+        String price = page.getHtml().xpath("//body/div/div[@class='side']/div/div/a/span[@class='red']/text()").toString();
+        String imgUrl = page.getHtml().xpath("//body/div/div[@class='side']/div/div/a/img/@src").toString();
+		page.putField("名称", name);
+		page.putField("品牌", brand);
+        page.putField("价格", price);
+        page.putField("imgUrl", imgUrl);
 		List<String> titleList = page.getHtml().xpath("//table/tbody/tr/th/span/text()").all();
 		List<String> contentList = page.getHtml().xpath("//table/tbody/tr/td//span/allText()").all();
 
