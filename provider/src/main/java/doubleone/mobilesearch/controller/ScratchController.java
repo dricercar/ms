@@ -6,7 +6,6 @@ import doubleone.mobilesearch.config.MobileSearchProperties;
 import doubleone.mobilesearch.entity.Payload;
 import doubleone.mobilesearch.entity.Product;
 import doubleone.mobilesearch.entity.ProductSource;
-import doubleone.mobilesearch.entity.SessionBean;
 import doubleone.mobilesearch.exception.PermissionDeniedException;
 import doubleone.mobilesearch.services.ScratchService;
 import io.swagger.annotations.Api;

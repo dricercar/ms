@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import doubleone.mobilesearch.beans.ZGCJsonElasticPipeline;
-import us.codecraft.webmagic.pipeline.Pipeline;
 
 @Configuration
 public class MobileElasticConfiguration{
@@ -23,9 +21,9 @@ public class MobileElasticConfiguration{
         return new RestHighLevelClient(RestClient.builder(new HttpHost(host, port)));
     }
 
-    @Bean
-    public Pipeline pipeline(){
-        return new ZGCJsonElasticPipeline();
-    }
+    // @Bean
+    // public Pipeline pipeline(){
+    //     return new ZGCJsonElasticPipeline();
+    // }
 
 }
