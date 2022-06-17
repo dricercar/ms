@@ -51,7 +51,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.55</version>
+			<version>1.2.83</version>
 		</dependency>
 		<!--根据@ConfigurationProperties注解的bean产生配置元数据-->
 		<dependency>
